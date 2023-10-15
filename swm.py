@@ -1,36 +1,35 @@
-/*
-Python program that measures the flow rate and total volume of water 
-using a flow sensor connected to a Raspberry Pi. The measured values 
-are then displayed on an OLED screen (Adafruit_SSD1306) and are also 
-sent to a Firebase Realtime Database.
+# Python program that measures the flow rate and total volume of water 
+# using a flow sensor connected to a Raspberry Pi. The measured values 
+# are then displayed on an OLED screen (Adafruit_SSD1306) and are also 
+# sent to a Firebase Realtime Database.
 
-Libraries and Initializations:
+# Libraries and Initializations:
 
-Import necessary libraries.
-Initialize GPIO pins, display, and other variables.
-Connect to Firebase database.
-Global Variables:
+# Import necessary libraries.
+# Initialize GPIO pins, display, and other variables.
+# Connect to Firebase database.
+# Global Variables:
 
-rate_cnt and total_cnt track the number of pulses and the total count respectively.
-GPIO Setup:
+# rate_cnt and total_cnt track the number of pulses and the total count respectively.
+# GPIO Setup:
 
-Set the GPIO mode.
-Define an input pin to listen to the flow sensor.
-Create an event to detect a falling edge (this is where the sensor sends a pulse indicating a certain volume of water has passed through).
-Display Setup:
+# Set the GPIO mode.
+# Define an input pin to listen to the flow sensor.
+# Create an event to detect a falling edge (this is where the sensor sends a pulse indicating a certain volume of water has passed through).
+# Display Setup:
 
-Set up the Adafruit OLED display, clear it, and set the dimensions.
-Define fonts and other display related constants.
-pulse_cntr Function:
+# Set up the Adafruit OLED display, clear it, and set the dimensions.
+# Define fonts and other display related constants.
+# pulse_cntr Function:
 
-Callback function that increments the pulse count every time the sensor sends a pulse (i.e., when a falling edge is detected on the input pin).
-Main Loop:
+# Callback function that increments the pulse count every time the sensor sends a pulse (i.e., when a falling edge is detected on the input pin).
+# Main Loop:
 
-If there's a rate count detected, calculate the flow rate and volume.
-Update the OLED display with the flow rate and volume.
-If there's no flow, show 0 flow rate.
-The last action inside the loop sends the data to Firebase using the patch method. This updates the database with the flow rate and volume under the current date.      
-*/
+# If there's a rate count detected, calculate the flow rate and volume.
+# Update the OLED display with the flow rate and volume.
+# If there's no flow, show 0 flow rate.
+# The last action inside the loop sends the data to Firebase using the patch method. This updates the database with the flow rate and volume under the current date.      
+
 
 import RPi.GPIO as GPIO
 import time
